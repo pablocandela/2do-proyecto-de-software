@@ -4,6 +4,7 @@ from aplicacion import views
 
 urlpatterns = [
     url(r'^users/$', views.UserList.as_view()),
+    url(r'^crearClase/$', views.crearClase, name='crearClase'),
 
     #url(r'^course/$', views.CourseList.as_view()),
     #url(r'^course/(?P[0-9]+)/$', views.CourseList.as_view()),
