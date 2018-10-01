@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <img src="{{ user.profile_pic }}" class="img-responsive">
+  <h1>{{ user.name }}</h1>
+
+  <p><strong>E-mail:</strong> {{ user.email }}</p>
+  <p><strong>Idioma:</strong> {{ user.language }}</p>
+  <p><strong>Fecha de nacimiento:</strong> {{ user.birthdate }}</p>
+
+{% endblock %}

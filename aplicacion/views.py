@@ -5,6 +5,7 @@ from django.contrib.auth import login, authenticate
 from aplicacion.forms import SignUpForm
 from aplicacion.forms import CrearClaseForm
 from django.shortcuts import render, redirect
+from django.views.generic import DetailView
 
 
 class UserList(generics.ListCreateAPIView):
@@ -12,7 +13,7 @@ class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveUpdateDestroyAPIView) :
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -36,17 +37,27 @@ class TakeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Take.objects.all()
     serializer_class = TakeSerializer
 
+class CourseDetailView(DetailView):
+    model = Course
+
+class UserDetailView(DetailView):
+    model = User
 
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             #este form save, guarda en la base, solo es eso
+            #form.save(commit=False)
             form.save()
             return redirect('signup')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+def index(request):
+    return render(request,'index.html')
+# Create your views here.
 
 
 def crearClase(request):
@@ -62,8 +73,4 @@ def crearClase(request):
         else:
             form = CrearClaseForm()
     return render(request, 'crearClase.html', {'form': form})
-
-
-# Create your views here.
-
 

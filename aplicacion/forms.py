@@ -1,14 +1,38 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
+from django.forms.widgets import DateInput
 from aplicacion.models import User,Course
 
 
 
+
 class SignUpForm(forms.ModelForm):
-      class Meta:
-        model = User
-        fields = ('id','name','email','password','language','birthdate')
+	class Meta:
+		model = User
+
+		fields = ('id','name','email','password','language','birthdate','profile_pic')
+
+		labels = {
+		    'name': _('Nombre'),
+		    'password': _('Contraseña'),
+		    'language': _('Idioma'),
+		    'birthdate': _('Fecha de nacimiento'),
+		    'profile_pic': _('Foto de perfil'),
+		}
+
+		widgets = {
+		    'password': forms.PasswordInput(),
+		    'birthdate': DateInput(attrs={'type': 'date'})
+		}
+
+		help_texts = {
+		    'name': _('Escribe tu nombre'),
+		}
+		error_messages = {
+		    'name': {
+		        'max_length': _("El nombre es demasiado largo."),
+		    },
+		}
 
 class CrearClaseForm(forms.ModelForm):
       
