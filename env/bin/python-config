@@ -1,4 +1,4 @@
-#!/home/pablo/Documentos/Ingenieria/2do-proyecto-de-software/env/bin/python
+#!/home/pablo/Escritorio/2do-proyecto-de-software-master/env/bin/python
 
 import sys
 import getopt

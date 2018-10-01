@@ -1,10 +1,10 @@
-#!/home/pablo/Documentos/Ingenieria/2do-proyecto-de-software/env/bin/python2
+#!/home/pablo/Escritorio/2do-proyecto-de-software-master/env/bin/python2
 
 # -*- coding: utf-8 -*-
 import re
 import sys
 
-from wheel.tool import main
+from wheel.cli import main
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
